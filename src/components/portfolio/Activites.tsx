@@ -167,7 +167,7 @@ export function Activites() {
       {/* Section header */}
       <div
         ref={headerRef}
-        className="container mx-auto px-6 max-w-7xl pt-28 md:pt-40 pb-20 text-center"
+        className="container mx-auto px-6 max-w-7xl pt-16 md:pt-20 pb-10 text-center"
       >
         <motion.span
           initial={{ opacity: 0, y: 20 }}

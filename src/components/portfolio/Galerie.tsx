@@ -31,13 +31,13 @@ export function Galerie() {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <section id="galerie" ref={ref} className="relative py-28 md:py-40 bg-white overflow-hidden">
+    <section id="galerie" ref={ref} className="relative min-h-screen py-14 md:py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9 }}
-          className="text-center mb-20"
+          className="text-center mb-10"
         >
           <span className="inline-block mb-4 text-xs uppercase tracking-[0.3em] text-petal font-semibold">
             04 — Galerie

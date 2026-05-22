@@ -111,7 +111,7 @@ function ContactForm() {
         </div>
         <div>
           <h4 className="font-display text-2xl font-bold text-cream mb-2">Message envoyé !</h4>
-          <p className="text-cream/60 text-sm max-w-xs">Nous vous contacterons dans les 24h. À très bientôt !</p>
+          <p className="text-cream/60 text-sm max-w-xs">Nous vous remercions pour votre confiance. Nous vous contacterons dans les 24h. À très bientôt !</p>
         </div>
         <button
           onClick={() => setStatus("idle")}

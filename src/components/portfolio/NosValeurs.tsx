@@ -52,7 +52,7 @@ export function NosValeurs() {
     <section
       id="nos-valeurs"
       ref={ref}
-      className="relative py-32 md:py-48 bg-ink overflow-hidden"
+      className="relative min-h-screen py-14 md:py-20 bg-ink overflow-hidden flex flex-col justify-center"
     >
       {/* Animated mesh glow that follows the active value */}
       <motion.div
@@ -76,7 +76,7 @@ export function NosValeurs() {
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         {/* Header */}
-        <div className="grid grid-cols-12 mb-20 md:mb-28 gap-6">
+        <div className="grid grid-cols-12 mb-10 md:mb-14 gap-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -238,7 +238,7 @@ export function NosValeurs() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, delay: 0.7 }}
-          className="mt-24 md:mt-32 max-w-4xl mx-auto text-center"
+          className="mt-12 md:mt-16 max-w-4xl mx-auto text-center"
         >
           <p className="font-display text-2xl md:text-4xl italic text-cream/90 leading-relaxed">
             « Chaque enfant est unique. Notre mission est de révéler

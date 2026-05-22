@@ -50,7 +50,7 @@ export function NotreUnivers() {
     <section
       id="notre-univers"
       ref={ref}
-      className="relative py-32 md:py-48 overflow-hidden bg-cream"
+      className="relative min-h-screen py-14 md:py-20 overflow-hidden bg-cream"
     >
       {/* Floating parallax blobs */}
       <motion.div style={{ y: bgY }} className="absolute inset-0 pointer-events-none">
@@ -69,7 +69,7 @@ export function NotreUnivers() {
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         {/* Editorial header */}
-        <div className="grid grid-cols-12 gap-6 mb-24 md:mb-32">
+        <div className="grid grid-cols-12 gap-6 mb-10 md:mb-14">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
