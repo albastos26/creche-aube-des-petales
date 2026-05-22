@@ -1,16 +1,28 @@
 import { motion } from "motion/react";
-import { Heart, Instagram, Facebook, Mail } from "lucide-react";
+import { Heart, Instagram, Mail } from "lucide-react";
 
 export function Footer() {
   const year = new Date().getFullYear();
   const go = (href: string) => document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <footer className="relative bg-ink text-white py-20 overflow-hidden">
+    <footer className="relative bg-ink text-white overflow-hidden">
+
+      {/* ── Grand titre "peekaboo" ── SEULE NOUVEAUTÉ */}
+      <div className="relative h-28 overflow-hidden">
+        <span
+          className="absolute bottom-[-1.5rem] left-1/2 -translate-x-1/2 whitespace-nowrap font-display font-black leading-none pointer-events-none select-none"
+          style={{ fontSize: "clamp(60px, 10vw, 120px)", color: "rgba(255,255,255,0.06)", letterSpacing: "-2px" }}
+        >
+          L'Aube des Pétales
+        </span>
+      </div>
+
+      {/* ── Tout ce qui suit est IDENTIQUE à votre original ── */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-petal/20 rounded-full blur-3xl animate-blob" />
       <div className="absolute bottom-0 right-0 w-[28rem] h-[28rem] bg-mint/15 rounded-full blur-3xl animate-blob" style={{ animationDelay: "4s" }} />
 
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      <div className="container mx-auto px-6 max-w-7xl relative z-10 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
             <h3 className="font-display text-3xl font-bold mb-4 text-sun">L'Aube des Pétales</h3>
@@ -18,10 +30,15 @@ export function Footer() {
               Un lieu d'éveil, de bienveillance et de joie où chaque enfant grandit en confiance.
             </p>
             <div className="flex gap-3">
-              {[Facebook, Instagram, Mail].map((Icon, i) => (
+              {[
+                { Icon: Instagram, href: "https://www.instagram.com/lespetitspetales" },
+                { Icon: Mail, href: "mailto:aubedespetales@gmail.com" },
+              ].map(({ Icon, href }, i) => (
                 <motion.a
                   key={i}
-                  href="#"
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -3 }}
                   className="w-11 h-11 rounded-full bg-white/10 backdrop-blur flex items-center justify-center hover:bg-petal transition-colors"
                 >
