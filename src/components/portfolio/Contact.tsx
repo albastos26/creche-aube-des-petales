@@ -14,9 +14,9 @@ const WHATSAPP_NUMBER     = "250787026169";
  
 const infoCards = [
   { icon: MapPin,  title: "Adresse",  content: "Nyamata, Rwanda",               sub: "Venez nous rendre visite",  accent: "bg-petal",   glow: "group-hover:shadow-petal/30"   },
-  { icon: Phone,   title: "Téléphone",content: "+250 787 026 169",              sub: "Lun – Ven · 9h00 – 17h",   accent: "bg-mint",    glow: "group-hover:shadow-mint/30"    },
-  { icon: Mail,    title: "Email",     content: "aubedespetales@gmail.com",    sub: "Réponse sous 24h",          accent: "bg-lavender",glow: "group-hover:shadow-lavender/30"},
-  { icon: Clock,   title: "Horaires", content: "Lun – Ven · 9h00 – 17h",       sub: "Accueil toute l'année",     accent: "bg-sun",     glow: "group-hover:shadow-sun/30"     },
+  { icon: Phone,   title: "Téléphone",content: "+250 787 026 169",              sub: "Lun – Ven · 8h00 – 17h",   accent: "bg-mint",    glow: "group-hover:shadow-mint/30"    },
+  { icon: Mail,    title: "Email",     content: "aubedespetales@gmail.com",    sub: "Réponse rapide",          accent: "bg-lavender",glow: "group-hover:shadow-lavender/30"},
+  { icon: Clock,   title: "Horaires", content: "Lun – Ven · 8h00 – 17h",       sub: "Accueil toute l'année",     accent: "bg-sun",     glow: "group-hover:shadow-sun/30"     },
 ];
  
 type Status = "idle" | "loading" | "success" | "error";
@@ -271,7 +271,7 @@ export function Contact() {
                 "Chaque enfant mérite un espace où il peut fleurir à son propre rythme."
               </p>
               <p className="mt-4 text-sm text-cream/50 not-italic font-medium">
-                — L'équipe de l'Aube des Pétales
+                l'Aube des Pétales
               </p>
             </div>
  
@@ -280,9 +280,9 @@ export function Contact() {
             <div className="flex flex-col gap-5">
               <p className="text-[10px] uppercase tracking-[0.3em] text-cream/45 font-semibold">Comment ça marche</p>
               {[
-                { n: "01", t: "Remplissez le formulaire", d: "Partagez vos coordonnées et vos questions." },
+                { n: "01", t: "Remplissez le formulaire", d: "Partagez votre adresse et vos questions." },
                 { n: "02", t: "Nous vous rappelons",      d: "Sous 24h pour planifier une visite." },
-                { n: "03", t: "Venez nous rencontrer",    d: "Découvrez l'équipe et nos espaces." },
+                { n: "03", t: "Venez nous rencontrer",    d: "Découvrez nos espaces." },
               ].map((step) => (
                 <div key={step.n} className="flex items-start gap-4">
                   <span className="font-display text-3xl text-cream/15 font-bold leading-none flex-shrink-0 w-10">{step.n}</span>

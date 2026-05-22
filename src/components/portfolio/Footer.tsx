@@ -73,7 +73,7 @@ export function Footer() {
               <li>Nyamata, Rwanda</li>
               <li>+250 787 026 169</li>
               <li>aubedespetales@gmail.com</li>
-              <li>Lun – Ven · 9h – 17h</li>
+              <li>Lun – Ven · 8h – 17h</li>
             </ul>
           </div>
         </div>
