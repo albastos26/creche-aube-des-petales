@@ -53,16 +53,16 @@ export function Footer() {
           <div>
             <h4 className="font-display text-xl font-bold mb-6">Nous contacter</h4>
             <ul className="space-y-3 text-white/70 text-sm">
-              <li>Kigali, Rwanda</li>
-              <li>+250 XXX XXX XXX</li>
-              <li>contact@aubedespetales.rw</li>
-              <li>Lun – Ven · 7h – 18h</li>
+              <li>Nyamata, Rwanda</li>
+              <li>+250 787 026 169</li>
+              <li>aubedespetales@gmail.com</li>
+              <li>Lun – Ven · 9h – 17h</li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
-          <p>© {year} L'Aube des Pétales. Tous droits réservés.</p>
+          <p>© {year} L'Aube des Pétales. A product of Bastos Dev</p>
           <p className="flex items-center gap-2">
             Créé avec <Heart className="w-4 h-4 text-petal fill-petal" /> pour nos petits explorateurs
           </p>
