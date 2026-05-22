@@ -88,7 +88,7 @@ function HeroInfoCard() {
           </div>
           <div>
             <p className="text-[10px] uppercase tracking-[0.25em] text-cream/55 mb-0.5">Horaires d'accueil</p>
-            <p className="text-sm font-semibold text-cream">Lun – Ven · 9h00 – 17h00</p>
+            <p className="text-sm font-semibold text-cream">Lun – Ven · 8h00 – 17h00</p>
           </div>
         </div>
 
