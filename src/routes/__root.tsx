@@ -1,4 +1,4 @@
-import faviconUrl from "../assets/favicon.png?url";
+import faviconUrl from "../assets/photos/favicon.png?url";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
