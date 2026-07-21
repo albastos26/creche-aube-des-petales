@@ -66,6 +66,7 @@ const activites = [
 ];
  
 const VERT_MARGIN = 7; // vh — top sticky offset and vertical padding
+const MOBILE_VERT_MARGIN = 5; // vh — mobile sticky offset
  
 interface StickyActivityCardProps {
   activite: (typeof activites)[number];
@@ -167,13 +168,13 @@ export function Activites() {
       {/* Section header */}
       <div
         ref={headerRef}
-        className="container mx-auto px-6 max-w-7xl pt-16 md:pt-20 pb-10 text-center"
+        className="container mx-auto px-4 md:px-6 max-w-7xl pt-12 md:pt-16 lg:pt-20 pb-8 md:pb-10 text-center"
       >
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="inline-block mb-4 text-xs uppercase tracking-[0.3em] text-petal font-semibold"
+          className="inline-block mb-3 md:mb-4 text-[10px] md:text-xs uppercase tracking-[0.3em] text-petal font-semibold"
         >
           03 — Activités
         </motion.span>
@@ -181,7 +182,7 @@ export function Activites() {
           initial={{ opacity: 0, y: 30 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-display text-4xl md:text-6xl font-bold text-ink mb-6"
+          className="font-display text-3xl md:text-4xl lg:text-6xl font-bold text-ink mb-4 md:mb-6"
         >
           Un programme <span className="italic">riche & vivant</span>
         </motion.h2>
@@ -189,7 +190,7 @@ export function Activites() {
           initial={{ opacity: 0, y: 20 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg md:text-xl text-ink-soft max-w-3xl mx-auto leading-relaxed"
+          className="text-base md:text-lg lg:text-xl text-ink-soft max-w-3xl mx-auto leading-relaxed px-4"
         >
           Pour éveiller tous les sens et révéler les talents de chaque enfant.
         </motion.p>
@@ -198,7 +199,7 @@ export function Activites() {
           initial={{ opacity: 0 }}
           animate={headerInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-8 text-[11px] uppercase tracking-[0.3em] text-ink/35"
+          className="mt-6 md:mt-8 text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-ink/35"
         >
           ↓ Faites défiler pour explorer
         </motion.p>

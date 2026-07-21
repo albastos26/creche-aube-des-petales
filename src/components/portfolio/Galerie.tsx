@@ -31,26 +31,26 @@ export function Galerie() {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <section id="galerie" ref={ref} className="relative min-h-screen py-14 md:py-20 bg-white overflow-hidden">
-      <div className="container mx-auto px-6 max-w-7xl">
+    <section id="galerie" ref={ref} className="relative min-h-screen py-12 md:py-20 bg-white overflow-hidden">
+      <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9 }}
-          className="text-center mb-10"
+          className="text-center mb-8 md:mb-10"
         >
-          <span className="inline-block mb-4 text-xs uppercase tracking-[0.3em] text-petal font-semibold">
+          <span className="inline-block mb-3 md:mb-4 text-[10px] md:text-xs uppercase tracking-[0.3em] text-petal font-semibold">
             04 — Galerie
           </span>
-          <h2 className="font-display text-4xl md:text-6xl font-bold text-ink mb-6">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-6xl font-bold text-ink mb-4 md:mb-6">
             Souvenirs <span className="italic">en couleurs</span>
           </h2>
-          <p className="text-lg md:text-xl text-ink-soft max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg lg:text-xl text-ink-soft max-w-3xl mx-auto leading-relaxed px-4">
             Découvrez notre univers et les sourires de nos petits explorateurs.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
           {images.map((img, i) => (
             <motion.button
               key={i}
@@ -58,7 +58,7 @@ export function Galerie() {
               animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{ duration: 0.7, delay: 0.2 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
               onClick={() => setSelected(img.url)}
-              className={`group relative overflow-hidden rounded-3xl shadow-soft hover:shadow-glow transition-shadow ${
+              className={`group relative overflow-hidden rounded-2xl md:rounded-3xl shadow-soft hover:shadow-glow transition-shadow ${
                 i % 5 === 0 ? "md:row-span-2 aspect-[3/4] md:aspect-[3/5]" : "aspect-square"
               }`}
             >
@@ -70,8 +70,8 @@ export function Galerie() {
                 className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute bottom-0 inset-x-0 p-5 text-white text-left translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                <p className="font-display text-lg md:text-xl">{img.caption}</p>
+              <div className="absolute bottom-0 inset-x-0 p-4 md:p-5 text-white text-left translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <p className="font-display text-base md:text-lg lg:text-xl">{img.caption}</p>
               </div>
             </motion.button>
           ))}
@@ -85,10 +85,10 @@ export function Galerie() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelected(null)}
-            className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-xl flex items-center justify-center p-6"
+            className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-6"
           >
-            <button className="absolute top-6 right-6 text-white hover:text-petal transition-colors">
-              <X size={32} />
+            <button className="absolute top-4 md:top-6 right-4 md:right-6 text-white hover:text-petal transition-colors p-2">
+              <X size={28} md:size={32} />
             </button>
             <motion.img
               initial={{ scale: 0.85, opacity: 0 }}
@@ -97,7 +97,7 @@ export function Galerie() {
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               src={selected}
               alt="Galerie"
-              className="max-w-full max-h-full rounded-2xl shadow-glow"
+              className="max-w-full max-h-full rounded-xl md:rounded-2xl shadow-glow"
             />
           </motion.div>
         )}

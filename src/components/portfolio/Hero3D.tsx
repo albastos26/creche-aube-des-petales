@@ -125,6 +125,65 @@ function HeroInfoCard() {
   );
 }
 
+// Mobile Info Card
+function MobileHeroInfoCard() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 1.2 }}
+      className="lg:hidden flex flex-col gap-4 mt-8"
+    >
+      <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-cream/10 backdrop-blur-md border border-cream/20 w-fit">
+        <span className="w-2 h-2 rounded-full bg-mint animate-pulse shadow-[0_0_8px_2px] shadow-mint/50" />
+        <span className="text-[10px] uppercase tracking-[0.3em] text-cream/90 font-semibold">
+          Ouvert maintenant
+        </span>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        <div className="rounded-xl bg-cream/8 backdrop-blur-xl border border-cream/15 p-4 flex flex-col gap-2">
+          <div className="w-8 h-8 rounded-lg bg-petal/20 border border-petal/30 flex items-center justify-center">
+            <Baby className="w-4 h-4 text-petal" />
+          </div>
+          <p className="text-[10px] uppercase tracking-[0.25em] text-cream/55">Âges acceptés</p>
+          <p className="text-sm font-semibold text-cream">12mois — 4 ans</p>
+        </div>
+
+        <div className="rounded-xl bg-cream/8 backdrop-blur-xl border border-cream/15 p-4 flex flex-col gap-2">
+          <div className="w-8 h-8 rounded-lg bg-sun/20 border border-sun/30 flex items-center justify-center">
+            <Clock className="w-4 h-4 text-sun" />
+          </div>
+          <p className="text-[10px] uppercase tracking-[0.25em] text-cream/55">Horaires</p>
+          <p className="text-sm font-semibold text-cream">8h – 17h</p>
+        </div>
+      </div>
+
+      <div className="rounded-xl bg-cream/8 backdrop-blur-xl border border-cream/15 p-4 flex items-center gap-3">
+        <div className="w-8 h-8 rounded-lg bg-sky/20 border border-sky/30 flex items-center justify-center flex-shrink-0">
+          <MapPin className="w-4 h-4 text-sky" />
+        </div>
+        <div>
+          <p className="text-[10px] uppercase tracking-[0.25em] text-cream/55">Localisation</p>
+          <p className="text-sm font-semibold text-cream">Nyamata, Rwanda</p>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-cream/8 backdrop-blur-xl border border-cream/15">
+        <div className="flex gap-0.5">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} className="w-3 h-3 fill-sun text-sun" />
+          ))}
+        </div>
+        <div className="h-4 w-px bg-cream/20" />
+        <p className="text-[11px] text-cream/80">
+          <span className="font-bold text-cream">4.9</span> · 10+ avis Google
+        </p>
+      </div>
+    </motion.div>
+  );
+}
+
 function Marquee() {
   const items = [...marqueeItems, ...marqueeItems];
   return (
@@ -194,7 +253,7 @@ export function Hero3D() {
 
       <motion.div
         style={{ y: textY, opacity }}
-        className="relative z-10 min-h-screen flex flex-col justify-between pt-32 pb-16 px-6 md:px-14 lg:px-20"
+        className="relative z-10 min-h-screen flex flex-col justify-between pt-24 md:pt-32 pb-12 md:pb-16 px-4 md:px-6 lg:px-14 xl:px-20"
       >
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -202,15 +261,15 @@ export function Hero3D() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex items-center gap-3"
         >
-          <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-cream text-ink text-[10px] uppercase tracking-[0.3em] font-semibold shadow-soft">
+          <span className="inline-flex items-center gap-2.5 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-cream text-ink text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-semibold shadow-soft">
             <span className="w-1.5 h-1.5 rounded-full bg-petal animate-pulse" />
             Crèche & Éveil · Nyamata
           </span>
         </motion.div>
 
         {/* Headline row — text left, info card right */}
-        <div className="flex items-center justify-between gap-8">
-          <div className="max-w-5xl flex-1">
+        <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-8">
+          <div className="max-w-5xl flex-1 text-center lg:text-left">
             <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -221,7 +280,7 @@ export function Hero3D() {
                 initial={{ y: 60, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="block text-[clamp(2.75rem,9vw,8.5rem)]"
+                className="block text-[clamp(2.5rem,12vw,8.5rem)]"
               >
                 L'aube
               </motion.span>
@@ -229,7 +288,7 @@ export function Hero3D() {
                 initial={{ y: 60, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                className="block italic font-light text-[clamp(2.75rem,9vw,8.5rem)] -mt-1 md:-mt-3 text-sun"
+                className="block italic font-light text-[clamp(2.5rem,12vw,8.5rem)] -mt-1 md:-mt-3 text-sun"
               >
                 des pétales.
               </motion.span>
@@ -239,7 +298,7 @@ export function Hero3D() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.85 }}
-              className="mt-8 max-w-xl text-base md:text-lg text-cream/85 leading-relaxed"
+              className="mt-6 md:mt-8 max-w-xl text-sm md:text-base lg:text-lg text-cream/85 leading-relaxed"
             >
               Un sanctuaire d'enfance où chaque pétale éclôt à son propre rythme,
               entre rires, découvertes et tendresse.
@@ -250,7 +309,7 @@ export function Hero3D() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.95 }}
-              className="mt-6"
+              className="mt-4 md:mt-6"
             >
               <Marquee />
             </motion.div>
@@ -260,13 +319,13 @@ export function Hero3D() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1 }}
-              className="mt-8 flex flex-wrap items-center gap-4"
+              className="mt-6 md:mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4"
             >
               <button
                 onClick={() =>
                   document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="group relative overflow-hidden px-7 py-4 rounded-full text-ink font-medium text-sm bg-cream flex items-center gap-3 shadow-glow hover:scale-[1.03] active:scale-[0.97] transition-transform"
+                className="group relative overflow-hidden px-6 py-3 md:px-7 md:py-4 rounded-full text-ink font-medium text-sm bg-cream flex items-center gap-3 shadow-glow hover:scale-[1.03] active:scale-[0.97] transition-transform"
               >
                 <span className="relative z-10">Réserver une visite</span>
                 <span className="relative z-10 w-8 h-8 rounded-full bg-ink text-cream flex items-center justify-center group-hover:rotate-45 transition-transform duration-500">
@@ -282,23 +341,27 @@ export function Hero3D() {
                 <span className="w-11 h-11 rounded-full border border-cream/40 flex items-center justify-center group-hover:bg-cream group-hover:text-ink group-hover:border-cream transition-all duration-500">
                   <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
                 </span>
-                Découvrir notre univers
+                <span className="hidden md:inline">Découvrir notre univers</span>
+                <span className="md:hidden">Découvrir</span>
               </button>
             </motion.div>
           </div>
 
-          {/* Right: floating info card */}
+          {/* Right: floating info card - desktop only */}
           <HeroInfoCard />
         </div>
+
+        {/* Mobile info card */}
+        <MobileHeroInfoCard />
 
         {/* Bottom bar — stats + scroll cue */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 border-t border-cream/15 pt-8"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8 border-t border-cream/15 pt-6 md:pt-8"
         >
-          <div className="grid grid-cols-3 gap-8 md:gap-14">
+          <div className="grid grid-cols-3 gap-4 md:gap-14 w-full md:w-auto">
             {stats.map((s, i) => (
               <motion.div
                 key={i}
@@ -307,10 +370,10 @@ export function Hero3D() {
                 transition={{ duration: 0.6, delay: 1.3 + i * 0.1 }}
                 className="flex flex-col"
               >
-                <span className="font-display text-2xl md:text-4xl text-cream font-bold leading-none">
+                <span className="font-display text-xl md:text-2xl lg:text-4xl text-cream font-bold leading-none">
                   {s.v}
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.25em] text-cream/65 mt-2">
+                <span className="text-[9px] md:text-[10px] uppercase tracking-[0.25em] text-cream/65 mt-1 md:mt-2">
                   {s.l}
                 </span>
               </motion.div>

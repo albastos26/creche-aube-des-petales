@@ -52,7 +52,7 @@ export function NosValeurs() {
     <section
       id="nos-valeurs"
       ref={ref}
-      className="relative min-h-screen py-14 md:py-20 bg-ink overflow-hidden flex flex-col justify-center"
+      className="relative min-h-screen py-12 md:py-20 bg-ink overflow-hidden flex flex-col justify-center"
     >
       {/* Animated mesh glow that follows the active value */}
       <motion.div
@@ -60,7 +60,7 @@ export function NosValeurs() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 0.4, scale: 1 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] rounded-full blur-[160px] pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] md:w-[60rem] h-[40rem] md:h-[60rem] rounded-full blur-[120px] md:blur-[160px] pointer-events-none"
         style={{ background: current.accent }}
       />
 
@@ -70,26 +70,26 @@ export function NosValeurs() {
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+          backgroundSize: "40px 40px",
         }}
       />
 
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      <div className="container mx-auto px-4 md:px-6 max-w-7xl relative z-10">
         {/* Header */}
-        <div className="grid grid-cols-12 mb-10 md:mb-14 gap-6">
+        <div className="grid grid-cols-12 mb-8 md:mb-14 gap-4 md:gap-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9 }}
             className="col-span-12 md:col-span-7"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="w-12 h-px bg-petal" />
-              <span className="text-[10px] uppercase tracking-[0.4em] text-petal font-semibold">
+            <div className="flex items-center gap-3 mb-4 md:mb-6">
+              <span className="w-8 md:w-12 h-px bg-petal" />
+              <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-petal font-semibold">
                 Chapitre 02 : Nos Valeurs
               </span>
             </div>
-            <h2 className="font-display text-5xl md:text-7xl font-bold text-cream leading-[0.95] tracking-tight">
+            <h2 className="font-display text-3xl md:text-5xl lg:text-7xl font-bold text-cream leading-[0.95] tracking-tight">
               Quatre valeurs,
               <span className="block italic font-light text-shimmer">Une promesse.</span>
             </h2>
@@ -100,27 +100,28 @@ export function NosValeurs() {
             transition={{ duration: 0.9, delay: 0.2 }}
             className="col-span-12 md:col-span-4 md:col-start-9 flex items-end"
           >
-            <p className="text-base md:text-lg text-cream/70 leading-relaxed">
+            <p className="text-sm md:text-base lg:text-lg text-cream/70 leading-relaxed">
               Des principes fondamentaux vivants qui guident chaque geste, chaque sourire, chaque journée.
             </p>
           </motion.div>
         </div>
 
-        {/* Interactive split layout */}
-        <div className="grid grid-cols-12 gap-6 md:gap-10 items-start">
+        {/* Interactive split layout - mobile optimized */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-10 items-start">
           {/* Left — interactive list */}
-          <div className="col-span-12 lg:col-span-7 flex flex-col">
+          <div className="col-span-1 lg:col-span-7 flex flex-col">
             {valeurs.map((v, i) => {
               const isActive = active === i;
               return (
                 <motion.button
                   key={i}
                   onMouseEnter={() => setActive(i)}
+                  onClick={() => setActive(i)} // Mobile tap support
                   onFocus={() => setActive(i)}
                   initial={{ opacity: 0, x: -30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.7, delay: 0.3 + i * 0.1 }}
-                  className="group relative text-left border-t border-white/10 last:border-b py-7 md:py-9 transition-colors"
+                  className="group relative text-left border-t border-white/10 last:border-b py-5 md:py-7 lg:py-9 transition-colors"
                 >
                   {/* Animated bg slide */}
                   <motion.span
@@ -130,8 +131,8 @@ export function NosValeurs() {
                     className="absolute left-0 top-0 bottom-0 w-1 origin-top"
                     style={{ background: v.accent }}
                   />
-                  <div className="flex items-center gap-6 md:gap-10 pl-6">
-                    <span className="font-display italic text-2xl md:text-3xl text-white/30 group-hover:text-white/60 transition-colors">
+                  <div className="flex items-center gap-4 md:gap-6 lg:gap-10 pl-4 md:pl-6">
+                    <span className="font-display italic text-xl md:text-2xl lg:text-3xl text-white/30 group-hover:text-white/60 transition-colors">
                       {v.num}
                     </span>
 
@@ -141,15 +142,15 @@ export function NosValeurs() {
                         rotate: isActive ? 8 : 0,
                       }}
                       transition={{ duration: 0.5 }}
-                      className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center shrink-0 backdrop-blur-md border border-white/20"
+                      className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-xl lg:rounded-2xl flex items-center justify-center shrink-0 backdrop-blur-md border border-white/20"
                       style={{ background: isActive ? v.accent : "rgba(255,255,255,0.05)" }}
                     >
-                      <v.icon className={`w-6 h-6 ${isActive ? "text-ink" : "text-white/70"} transition-colors`} />
+                      <v.icon className={`w-5 h-5 md:w-6 md:h-6 ${isActive ? "text-ink" : "text-white/70"} transition-colors`} />
                     </motion.div>
 
                     <div className="flex-1 min-w-0">
                       <h3
-                        className="font-display text-3xl md:text-5xl font-bold leading-none tracking-tight transition-colors duration-500"
+                        className="font-display text-xl md:text-3xl lg:text-5xl font-bold leading-none tracking-tight transition-colors duration-500"
                         style={{ color: isActive ? "var(--color-cream)" : "rgba(255,255,255,0.45)" }}
                       >
                         {v.title}
@@ -159,10 +160,10 @@ export function NosValeurs() {
                     <motion.div
                       animate={{ x: isActive ? 0 : -10, opacity: isActive ? 1 : 0 }}
                       transition={{ duration: 0.4 }}
-                      className="hidden md:flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-cream/80"
+                      className="hidden md:flex items-center gap-2 text-[10px] md:text-xs uppercase tracking-[0.3em] text-cream/80"
                     >
                       <span>{v.subtitle}</span>
-                      <ArrowUpRight className="w-4 h-4" />
+                      <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
                     </motion.div>
                   </div>
                 </motion.button>
@@ -175,16 +176,16 @@ export function NosValeurs() {
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.4 }}
-            className="col-span-12 lg:col-span-5 lg:sticky lg:top-28"
+            className="col-span-1 lg:col-span-5 lg:sticky lg:top-28 order-first lg:order-last mb-6 lg:mb-0"
           >
-            <div className="relative rounded-[2rem] overflow-hidden border border-white/10 backdrop-blur-2xl bg-white/[0.03] p-8 md:p-10 min-h-[26rem]">
+            <div className="relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden border border-white/10 backdrop-blur-2xl bg-white/[0.03] p-6 md:p-8 lg:p-10 min-h-[20rem] md:min-h-[26rem]">
               {/* Accent corner */}
               <motion.div
                 key={`accent-${active}`}
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 0.6 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-3xl"
+                className="absolute -top-16 -right-16 md:-top-20 md:-right-20 w-48 h-48 md:w-64 md:h-64 rounded-full blur-3xl"
                 style={{ background: current.accent }}
               />
 
@@ -195,23 +196,23 @@ export function NosValeurs() {
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 className="relative"
               >
-                <div className="flex items-center justify-between mb-8">
-                  <span className="font-display italic text-5xl text-cream">{current.num}</span>
+                <div className="flex items-center justify-between mb-4 md:mb-8">
+                  <span className="font-display italic text-4xl md:text-5xl text-cream">{current.num}</span>
                   <div
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-glow"
+                    className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center shadow-glow"
                     style={{ background: current.accent }}
                   >
-                    <current.icon className="w-8 h-8 text-ink" />
+                    <current.icon className="w-6 h-6 md:w-8 md:h-8 text-ink" />
                   </div>
                 </div>
 
-                <h4 className="font-display text-4xl md:text-5xl font-bold text-cream mb-2 leading-tight">
+                <h4 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-cream mb-2 leading-tight">
                   {current.title}
                 </h4>
-                <p className="text-sm uppercase tracking-[0.3em] text-cream/50 mb-6">
+                <p className="text-[10px] md:text-sm uppercase tracking-[0.3em] text-cream/50 mb-4 md:mb-6">
                   {current.subtitle}
                 </p>
-                <p className="text-cream/80 leading-relaxed text-base md:text-lg mb-8">
+                <p className="text-cream/80 leading-relaxed text-sm md:text-base lg:text-lg mb-6 md:mb-8">
                   {current.description}
                 </p>
 
@@ -222,7 +223,7 @@ export function NosValeurs() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 + i * 0.08 }}
-                      className="text-xs px-3 py-1.5 rounded-full border border-white/15 text-cream/80 bg-white/5"
+                      className="text-[10px] md:text-xs px-2.5 py-1 md:px-3 md:py-1.5 rounded-full border border-white/15 text-cream/80 bg-white/5"
                     >
                       {k}
                     </motion.span>
@@ -238,15 +239,15 @@ export function NosValeurs() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, delay: 0.7 }}
-          className="mt-12 md:mt-16 max-w-4xl mx-auto text-center"
+          className="mt-10 md:mt-16 max-w-4xl mx-auto text-center"
         >
-          <p className="font-display text-2xl md:text-4xl italic text-cream/90 leading-relaxed">
+          <p className="font-display text-xl md:text-2xl lg:text-4xl italic text-cream/90 leading-relaxed px-4">
             « Chaque enfant est unique. Notre mission est de révéler
             <span className="text-shimmer not-italic font-normal"> son plein potentiel </span>
             dans un cadre aimant et stimulant. »
           </p>
-          <div className="w-20 h-px bg-petal mx-auto mt-8" />
-          <p className="text-xs uppercase tracking-[0.4em] text-cream/50 mt-4">L'Aube des Pétales</p>
+          <div className="w-16 md:w-20 h-px bg-petal mx-auto mt-6 md:mt-8" />
+          <p className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-cream/50 mt-3 md:mt-4">L'Aube des Pétales</p>
         </motion.div>
       </div>
     </section>

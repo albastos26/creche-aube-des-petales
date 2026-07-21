@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
 import g1 from "@/assets/photos/hero.jpeg";
 import g2 from "@/assets/photos/peinture.jpeg";
@@ -30,9 +30,27 @@ const STYLES = [
   "w-[18vw] h-[22vh] top-[22.5vh] left-[25vw]",
 ];
 
+const MOBILE_STYLES = [
+  "w-[40vw] h-[25vh]",
+  "w-[50vw] h-[30vh] -top-[20vh] left-[5vw]",
+  "w-[35vw] h-[40vh] -top-[10vh] -left-[15vw]",
+  "w-[45vw] h-[30vh] left-[30vw]",
+  "w-[35vw] h-[35vh] top-[25vh] left-[5vw]",
+  "w-[40vw] h-[30vh] top-[20vh] -left-[15vw]",
+  "w-[30vw] h-[25vh] top-[15vh] left-[30vw]",
+];
+
 export function ImmersiveScrollGallery({ images = DEFAULT_IMAGES }: { images?: Pic[] }) {
   const container = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: container, offset: ["start start", "end end"] });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const s4 = useTransform(scrollYProgress, [0, 1], [1, 4]);
   const s5 = useTransform(scrollYProgress, [0, 1], [1, 5]);
@@ -44,6 +62,7 @@ export function ImmersiveScrollGallery({ images = DEFAULT_IMAGES }: { images?: P
   const scaleSection = useTransform(scrollYProgress, [0.6, 0.85], [0.8, 1]);
 
   const scales: MotionValue<number>[] = [s4, s5, s6, s5, s6, s8, s9];
+  const currentStyles = isMobile ? MOBILE_STYLES : STYLES;
 
   return (
     <section ref={container} className="relative h-[300vh] bg-cream">
@@ -54,20 +73,20 @@ export function ImmersiveScrollGallery({ images = DEFAULT_IMAGES }: { images?: P
             style={{ scale: scales[i % 7], opacity: opacityImage }}
             className="absolute flex items-center justify-center w-full h-full top-0"
           >
-            <div className={`relative ${STYLES[i % STYLES.length]}`}>
-              <img src={img.src} alt={img.alt} className="object-cover w-full h-full rounded-2xl shadow-glow" />
+            <div className={`relative ${currentStyles[i % currentStyles.length]}`}>
+              <img src={img.src} alt={img.alt} className="object-cover w-full h-full rounded-xl md:rounded-2xl shadow-glow" />
             </div>
           </motion.div>
         ))}
 
         <motion.div
           style={{ opacity: opacitySection, scale: scaleSection }}
-          className="relative w-full max-w-3xl mx-auto px-8 text-center"
+          className="relative w-full max-w-3xl mx-auto px-6 md:px-8 text-center"
         >
-          <span className="inline-block mb-4 text-xs uppercase tracking-[0.3em] text-petal font-semibold">
+          <span className="inline-block mb-3 md:mb-4 text-[10px] md:text-xs uppercase tracking-[0.3em] text-petal font-semibold">
             Notre univers
           </span>
-          <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-light text-ink leading-snug italic">
+          <h2 className="font-display text-2xl md:text-3xl lg:text-5xl xl:text-6xl font-light text-ink leading-snug italic px-4">
             Chaque instant à L'Aube des Pétales devient une découverte,
             un éclat de rire, un pas vers la confiance.
           </h2>
