@@ -3,8 +3,12 @@ import "./lib/error-capture";
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
 
+type Env = {
+  ASSETS: Fetcher;
+};
+
 type ServerEntry = {
-  fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
+  fetch: (request: Request, env: Env, ctx: unknown) => Promise<Response> | Response;
 };
 
 let serverEntryPromise: Promise<ServerEntry> | undefined;
@@ -67,7 +71,21 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 }
 
 export default {
-  async fetch(request: Request, env: unknown, ctx: unknown) {
+  async fetch(request: Request, env: Env, ctx: unknown) {
+    const url = new URL(request.url);
+    
+    // Serve static assets from the ASSETS binding
+    if (url.pathname.startsWith('/assets/') || url.pathname.startsWith('/favicon')) {
+      try {
+        const assetResponse = await env.ASSETS.fetch(request);
+        if (assetResponse && assetResponse.status !== 404) {
+          return assetResponse;
+        }
+      } catch (error) {
+        console.error('Failed to fetch asset:', error);
+      }
+    }
+    
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
